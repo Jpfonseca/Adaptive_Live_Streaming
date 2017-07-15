@@ -1,6 +1,6 @@
-#Configuration
+# Configuration
 
-##DHCP Configuration
+## DHCP Server Configuration
 
 Configured the DHCP SERVER to give addresses to the new "machines in the network" in `dhcpd.conf`
 
@@ -9,7 +9,7 @@ Denied interfaces of `wlan0` (built-in Wifi module) in `/etc/dhcpcd.conf`
 Configured the DHCP SERVER to serve requests on the interface `wlan0` in `/etc/default/isc-dhcp-server`
 
 
-##Network configuration
+## Network configuration
 
 In `/etc/network/interfaces` configured `wlan0`:  
 -Ip: 192.169.0.1 
