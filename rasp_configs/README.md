@@ -12,10 +12,10 @@ Configured the DHCP SERVER to serve requests on the interface `wlan0` in `/etc/d
 ## Network configuration
 
 In `/etc/network/interfaces` configured `wlan0`:  
--Ip: 192.169.0.1 
--Netmask: 255.255.255.0
--Broadcast Address: 192.169.0.255
--Network: 192.169.0.0
+- Ip: 192.169.0.1 
+- Netmask: 255.255.255.0
+- Broadcast Address: 192.169.0.255
+- Network: 192.169.0.0
 
 Configured `wlan0` as an hotspot in `/etc/hostapd/hostapd.conf`
 
@@ -24,6 +24,6 @@ SSID:Saturday
 Passphrase:video12345
 
 Setted the path to the hostpad configuration in `/etc/default/hostapd`: 
- --DAEMON_CONF="/etc/hostapd/hostapd.conf"
+ - DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 

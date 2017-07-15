@@ -2,4 +2,4 @@
 
 ## DHCP and DNS
 
- *sudo apt-get install isc-dhcp-server bind9 
+ * `sudo apt-get install isc-dhcp-server bind9` 
