@@ -27,5 +27,17 @@ make && make install
 We need a webserver to serve the video on a Html page . To do so we use NGINX 
  * `sudo apt-get install ngnix`
 
-#Install
+#Python Dependencies
+Use Python 2.7 
 
+##Install Python-pip
+
+We need to install pip to use  external libraries such as requests. We can do this by running:
+ * `sudo apt-get install python2-pip`
+
+
+###Install packages using pip
+
+We need to install some packages for further use in python . We can do it by running :
+
+ * `sudo pip2 install -r requirements.txt`
