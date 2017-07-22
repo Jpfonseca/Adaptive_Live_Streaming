@@ -30,6 +30,11 @@ We need a webserver to serve the video on a Html page . To do so we use NGINX
 #Python Dependencies
 Use Python 2.7 
 
+##Install Python-nmap
+We need to install pip to use  external libraries such as requests. We can do this by running:
+ * `sudo apt-get install python2-nmap`
+
+
 ##Install Python-pip
 
 We need to install pip to use  external libraries such as requests. We can do this by running:

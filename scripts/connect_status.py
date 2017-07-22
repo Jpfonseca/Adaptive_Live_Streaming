@@ -15,7 +15,7 @@ def subprocessping(npings, url):
 def check_connection(npings, url):
     (out,err) =subprocessping(npings,url)
 
-
+    print out
 ##cannot ping phone so we need to check connetion with the cellphone ...
     if out.find("packet")==-1:
         print "Cannot reach  " +url
@@ -27,11 +27,11 @@ def check_connection(npings, url):
 
     strings=out.split(",")
     values=[]
-    for i in range(0, 3):
-       # print strings[i] +"\n"
-        values.append(int(re.search(r'\d+', strings[i]).group()))
-    #print values
 
+    for i in range(0, 3):
+        values.append(int(re.search(r'\d+', strings[i]).group()))
+
+    #Percentage of lost packets
     if values[2]>50:
         return 1
     else :
@@ -42,6 +42,6 @@ def check_connection(npings, url):
 
 if __name__ == "__main__":
 
-    var=check_connection("10", "google.pt")
-    print var
+    #var=check_connection("10", "google.pt")
+    #print var
     sys.exit()
