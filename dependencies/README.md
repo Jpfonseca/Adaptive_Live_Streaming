@@ -22,26 +22,26 @@ cd ffmpeg
 make && make install
 ```
 
-##Install NGINX 
+## Install NGINX 
 
 We need a webserver to serve the video on a Html page . To do so we use NGINX 
  * `sudo apt-get install ngnix`
 
-#Python Dependencies
+# Python Dependencies
 Use Python 2.7 
 
-##Install Python-nmap
+## Install Python-nmap
 We need to install pip to use  external libraries such as requests. We can do this by running:
  * `sudo apt-get install python2-nmap`
 
 
-##Install Python-pip
+## Install Python-pip
 
 We need to install pip to use  external libraries such as requests. We can do this by running:
  * `sudo apt-get install python2-pip`
 
 
-###Install packages using pip
+### Install packages using pip
 
 We need to install some packages for further use in python . We can do it by running :
 
