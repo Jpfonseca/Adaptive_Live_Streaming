@@ -12,7 +12,7 @@ from host_nmap import host_discovery
 def process_num(process):
     return os.system("pidof " + process)
 
-def start ffserver()
+def start_ffserver(process):
 # change process to whatever command you may need to execute
     process ="sudo ffserver -d -f /etc/ffserver.conf"
     os.system("nohup "+process+" &")
@@ -20,7 +20,7 @@ def start ffserver()
 
 def start_ffmpeg(quality, streamin, streamout):
 # change process to whatever command you may need to execute
-    process ="ffmpeg bbb_1080.mp4"
+    process ="vlc bbb_1080.mp4"
     os.system("nohup "+process+" &")
     return process
 
@@ -37,7 +37,7 @@ def start_streaming(streamin, streamout, manual_stop):
     quality=['1','2','3']
     i=0
 
-    process_ffserver =start_ffserver()
+    #process_ffserver =start_ffserver()
 
     process_ffmpeg =start_ffmpeg(quality[i],streamin,streamout)
 
@@ -66,7 +66,7 @@ def start_streaming(streamin, streamout, manual_stop):
                 process =start_ffmpeg(quality[i],streamin,streamout)
             else:
                 print "Tested all qualities . Your network may have some issues\n"
-                kill_process(process_ffserver)                
+                #kill_process(process_ffserver)                
                 return 2
         else :
 
@@ -78,7 +78,7 @@ def start_streaming(streamin, streamout, manual_stop):
                 if int(testVar)==0 :
                     print "Stream Ending \n"
                     kill_process(process_ffmpeg)
-                    kill_process(process_ffserver)
+                    #kill_process(process_ffserver)
                     return 0
 
     return 0
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 # I have configured the network 192.169.0.0/24 on the RPI
 # as the network that will be used as a wifi Access Point
 
-    network='192.168.0.0/24'
+    network='192.169.0.0/24'
     host=host_discovery(network)
 
 

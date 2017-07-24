@@ -27,3 +27,13 @@ Setted the path to the hostpad configuration in `/etc/default/hostapd`:
  - DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 
+##FFserver config 
+
+In the `etc/ffserver.conf` configured the address and port where the stream will be streamed, the quality of the stream, the bandwidth available, the max number of clients 
+
+#Running the tools
+
+
+##FFserver
+
+Supposing you have 
