@@ -27,7 +27,13 @@ make && make install
 We need a webserver to serve the video on a Html page . To do so we use NGINX 
  * `sudo apt-get install ngnix`
 
+## Install NMAP
+We need to know the ip of the device which will "receive the stream". We already know that that device will be on the network `192.169.0.1` and the mask is `255.255.255.0`
+ * `sudo apt-get install nmap`
+
+
 # Python Dependencies
+
 Use Python 2.7 
 
 ## Install Python-nmap

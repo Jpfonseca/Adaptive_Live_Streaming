@@ -42,6 +42,6 @@ def check_connection(npings, url):
 
 if __name__ == "__main__":
 
-    #var=check_connection("10", "google.pt")
-    #print var
+    var=check_connection("10", "google.pt")
+    print var
     sys.exit()

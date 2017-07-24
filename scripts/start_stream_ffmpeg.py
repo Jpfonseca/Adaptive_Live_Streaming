@@ -12,13 +12,19 @@ from host_nmap import host_discovery
 def process_num(process):
     return os.system("pidof " + process)
 
-def start_ffmpeg(quality, streamin, streamout):
+def start ffserver()
 # change process to whatever command you may need to execute
-    process ="ffplay SSA50199_512kb.mp4"
+    process ="sudo ffserver -d -f /etc/ffserver.conf"
     os.system("nohup "+process+" &")
     return process
 
-def kill_ffmpeg(process):
+def start_ffmpeg(quality, streamin, streamout):
+# change process to whatever command you may need to execute
+    process ="ffmpeg bbb_1080.mp4"
+    os.system("nohup "+process+" &")
+    return process
+
+def kill_process(process):
     pid=process_num(process)
 
     if pid!=0 :
@@ -30,7 +36,10 @@ def kill_ffmpeg(process):
 def start_streaming(streamin, streamout, manual_stop):
     quality=['1','2','3']
     i=0
-    process =start_ffmpeg(quality[i],streamin,streamout)
+
+    process_ffserver =start_ffserver()
+
+    process_ffmpeg =start_ffmpeg(quality[i],streamin,streamout)
 
     status_prob=0
 
@@ -45,7 +54,7 @@ def start_streaming(streamin, streamout, manual_stop):
 
                 ++status_prob
 
-            if kill_ffmpeg(process)==0:
+            if kill_process(process_ffmpeg)==0:
                 return 1
 
             time.sleep(3)
@@ -57,6 +66,7 @@ def start_streaming(streamin, streamout, manual_stop):
                 process =start_ffmpeg(quality[i],streamin,streamout)
             else:
                 print "Tested all qualities . Your network may have some issues\n"
+                kill_process(process_ffserver)                
                 return 2
         else :
 
@@ -67,7 +77,8 @@ def start_streaming(streamin, streamout, manual_stop):
 
                 if int(testVar)==0 :
                     print "Stream Ending \n"
-                    kill_ffmpeg(process)
+                    kill_process(process_ffmpeg)
+                    kill_process(process_ffserver)
                     return 0
 
     return 0
