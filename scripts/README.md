@@ -33,7 +33,7 @@ following address (while connected to the Go Pro's WIFI):
 Imagine your network between the RPi(PC) and cellphone has a huge packet loss, this script can reduce the quality of the video in order to give you the 
 possibility to see the video stream without lag.  
 
-Supposing you are running the `start_stream_gopro.py` already, you should be able to receive the packets send by the GoPro via `Udp://10.5.5.9:8854`. 
+Supposing you are running the `start_stream_gopro.py` already, you should be able to receive the packets send by the GoPro via `udp://:8554`. 
 Therefore this script fetches the stream of UDP data using FFmpeg , changes it and sends it to whererever you may need the stream to be(I send it to the port 
 8081).
 The most important "feature" of this script, is how the FFmpeg can alter the videostream that comes from the GoPro.

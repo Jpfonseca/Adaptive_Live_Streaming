@@ -31,7 +31,7 @@ def check_rtt(npings, url):
         values1.append(int(re.search(r'\d+', strings1[i]).group()))
 
     #Round Trip delay info (ms)
-    if values1[1]>15:
+    if values1[1]>10:
         return 1
     else :
         if values1[1]<5:
@@ -73,6 +73,6 @@ def check_connection(npings, url):
 if __name__ == "__main__":
 
     var=check_connection("10", "google.pt")
-    print var
-    print check_rtt("10", "google.pt")
+    var1= check_rtt("10", "google.pt")
+    print "Packet loss: "+str(var)+"\n Round Trip Delay: "+str(var1)
     sys.exit()

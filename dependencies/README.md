@@ -1,4 +1,4 @@
-# Installed packages 
+l# Installed packages 
 
 ## DHCP and DNS
 
@@ -11,16 +11,9 @@ follow the walkthrough until you are ready to install ffmpeg:
  
 * `https://trac.ffmpeg.org/wiki/CompilationGuide/RaspberryPi`
 
-In the Raspberry , open a terminal and type this:
+OR
 
-```
-cd /usr/src
-git clone git://source.ffmpeg.org/ffmpeg.git
-
-cd ffmpeg
-./configure
-make && make install
-```
+* `https://owenashurst.com/?p=242&p=242`
 
 ## Install NGINX 
 

@@ -7,21 +7,31 @@ import math
 
 ##files in the /scripts/ folder
 from connect_status import check_connection
+from connect_status import check_rtt
+
 from host_nmap import host_discovery
 
 def process_num(process):
     return os.system("pidof " + process)
 
-def start_ffserver(process):
+def start_ffserver():
 # change process to whatever command you may need to execute
-    process ="sudo ffserver -d -f /etc/ffserver.conf"
+    process ="ffserver -d -f ../Rpi_configs/ffserver_mjpg.conf"
+#    process ="ffserver -d -f ../Rpi_configs/ffserver_webm.conf"
     os.system("nohup "+process+" &")
     return process
 
 def start_ffmpeg(quality, streamin, streamout):
 # change process to whatever command you may need to execute
-    process ="vlc bbb_1080.mp4"
+
+#In my case scenario I used these commands:
+#1) Video from GoPeo
+#ffmpeg -benchmark -re -i http://10.5.5.9:8080/videos/DCIM/100GOPRO/GOPR0675.MP4 -tune zerolatency -probesize 8192 -s 1920x1080  -c copy -vcodec libx264 http://127.0.0.1:8090/feed1.ffm
+#2) Livestream from GoPro
+#ffmpeg -an -fflags nobuffer -f:v mpegts -probesize 8192 -i udp://:8554 -s 480x360  http://127.0.0.1:8090/feed1.ffm
+    process ="ffmpeg -an -fflags nobuffer -f:v mpegts -tune zerolatency -probesize 8192 -i "+streamin+" -s "+quality+" "+streamout
     os.system("nohup "+process+" &")
+    print process 
     return process
 
 def kill_process(process):
@@ -30,43 +40,38 @@ def kill_process(process):
     if pid!=0 :
         print "Problem while fetching process {PIDOF exit code :"+str(pid)+"}"
         return 0
-    os.system("nohup "+"kill "+process+" &")
     return 1
 
-def start_streaming(streamin, streamout, manual_stop):
-    quality=['1','2','3']
+def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data_collection):
+    quality=["1920x1080","1280x720","1024x768","800x600","720x480","480x360"]
+    quality=["1024x768","800x600","720x480","480x360"]
     i=0
 
-    #process_ffserver =start_ffserver()
+    process_ffserver =start_ffserver()
 
     process_ffmpeg =start_ffmpeg(quality[i],streamin,streamout)
 
-    status_prob=0
-
     while(1):
-        status=check_connection("10",streamout)
+
+        status=check_rtt(npings,destinationhost)
+
         if math.fabs(status) ==1:
-
-            if status ==-1 :
-                print "Can't Stream video . Lost connection to the network\n Status Problem: "+str(status_prob)+"\n"
-                if status_prob==2 :
-                    return 1
-
-                ++status_prob
-
-            if kill_process(process_ffmpeg)==0:
+            print "FFmpeg kill"
+            if kill_process("ffmpeg")==0:
                 return 1
+            if data_collection==1:
+                kill_process("ffserver")
+                time.sleep(3)
+                #os.system("nohup "+"sudo rm -rf /tmp/feed1.ffm"+" &")           
+                process_ffserver =start_ffserver()
 
-            time.sleep(3)
-
-            ++i
-            if i<=len(quality):
+            i=i+1
+            if i<len(quality):
                 print "Testing new quality \n"
-                status_prob=0
                 process =start_ffmpeg(quality[i],streamin,streamout)
             else:
                 print "Tested all qualities . Your network may have some issues\n"
-                #kill_process(process_ffserver)                
+                kill_process("ffserver")                
                 return 2
         else :
 
@@ -77,8 +82,8 @@ def start_streaming(streamin, streamout, manual_stop):
 
                 if int(testVar)==0 :
                     print "Stream Ending \n"
-                    kill_process(process_ffmpeg)
-                    #kill_process(process_ffserver)
+                    kill_process("ffserver")
+                    kill_process("ffmpeg")
                     return 0
 
     return 0
@@ -90,19 +95,30 @@ if __name__ == "__main__":
 # as the network that will be used as a wifi Access Point
 
     network='192.169.0.0/24'
-    host=host_discovery(network)
+    destinationhost=host_discovery(network)
 
 
 #Ending Stream Manually
-    print "Do you wish to end the stream manually (without Ctrl^C) \n 0) NO \n Others) Yes"
+    print "Do you want to stream with delay tolerance or livestream with image loss?? \n 0) Delay tolerant streaming \n Others) Livestream with image loss\n"
+
+    data_collection=raw_input()
+    print "\n"
+    if int(data_collection)!=0:
+        data_collection=1
+
+
+    print "Do you wish to end the stream manually (without Ctrl^C) \n 0) NO \n Others) Yes\n"
 
     manual_stop_stream=raw_input()
     print "\n"
     if int(manual_stop_stream)!=0:
         manual_stop_stream=1
+    
 
-
+    streamin="udp://:8554"
+    streamout="http://127.0.0.1:8090/feed1.ffm"
 ##stream  input & output
-    var=start_streaming("15", host,manual_stop_stream)
+    var=start_streaming("10", destinationhost, streamin ,streamout,manual_stop_stream,data_collection)
+    kill_process("ffserver")
     print "Exited with code " +str(var)
     sys.exit()

@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Video Streamer</title>
+<link href="./css/video-js.min.css" rel="stylesheet">
+<style>
+body{
+ text-align: -webkit-center;
+}
+
+main-preview-player {
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    max-width: 1920px;
+}
+</style>
+</head>
+
+
+<body>
+
+<h1>Video Streamer </h1>
+
+<img style="width:100%;" src="http://127.0.0.1/streamjpg/"/>
+
+<hr/>        
+
+<section class="main-preview-player">
+<video id="my-player" class="video-js" controls preload="auto" poster="./image/gopro-logo-vector-image.jpg"  data-setup="{}" crossorigin="anonymous">
+    <source src="192.169.0.1/streamwebm/" type='video/webm'>
+    
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+
+<script src="./js/video.min.js"></script>
+
+
+
+</body>
+</html>
