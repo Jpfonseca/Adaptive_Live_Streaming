@@ -23,17 +23,26 @@ WPA-PSK
 SSID:Saturday
 Passphrase:video12345
 
-Setted the path to the hostpad configuration in `/etc/default/hostapd`: 
+Set the path to the hostpad configuration in `/etc/default/hostapd`: 
  - DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
+## FFserver config 
+Now we need to decide the configuration of the FFserver. To do this we need to create a file, where the configuration will be
+set.
+In the file we can configure the address and port where the stream will be streamed, the quality of it, the bandwidth 
+available, the max number of clients, video resolution , etc.
 
-##FFserver config 
-
-In the `etc/ffserver.conf` configured the address and port where the stream will be streamed, the quality of the stream, the bandwidth available, the max number of clients 
-
-#Running the tools
+There are several examples of configurations in the `ffserver_configs/` folder.
 
 
-##FFserver
+# Running the tools	
 
-Supposing you have 
+
+## FFserver
+
+Supposing you have  installed the FFmpeg with all extra packages, you will be able to stream every type of video you want.
+Furthermore, you will have the possibility to change the quality of the stream/video and manipulating the output. This means,
+that you decide the format of the stream.
+
+
+
