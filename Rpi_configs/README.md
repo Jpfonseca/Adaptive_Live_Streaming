@@ -5,7 +5,7 @@ All the files mentioned in this file are available [here](../Rpi_configs/)
 
 ## Network configuration
 Below it is shown the network architecture of the project:
-[Network](../images/Network.jpeg)
+![Network](../images/Network.jpeg)
 
 We will now configure the interface `wlan0`(which will work as an hotspot) of the Raspberry:
 

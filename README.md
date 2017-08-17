@@ -34,7 +34,16 @@ In order to use this project you will need :
 * Smartphone or computer
 * USB WIFI Dongle
 
+## Install Guide and Configuration Guide
+In order to run this project you will need to install and compile some packages on  the raspberry:
+
+* [Package Install](./dependencies/README.md)
+* [Python Dependencies](./dependencies/Python.md)
+
+When you are done with the installs, you can start to configure stuff :
+
+* [Raspberry Configuration](./Rpi_configs/README.md)
+
 ## Running the project 
 
-In order to run this project you will need to [install and compile](./dependencies/README.md) some software on  the raspberry.
 
