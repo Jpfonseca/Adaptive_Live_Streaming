@@ -1,6 +1,0 @@
-----------------------------------------------------
-List of Hosts
-
--1) Exit
-1){192.169.0.1}:{up}
-Which is the host that will receive the stream ?
