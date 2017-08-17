@@ -32,6 +32,7 @@ In order to use this project you will need :
 * Raspberry Pi v2 B or v3
 * Go Pro Hero 4 firmware version 5.0.0
 * Smartphone or computer
+* USB WIFI Dongle
 
 ## Running the project 
 

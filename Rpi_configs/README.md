@@ -2,16 +2,12 @@
 
 All the files mentioned in this file are available [here](../Rpi_configs/)
 
-## DHCP Server Configuration
-
-1. Configured the DHCP SERVER to give addresses to the new "machines in the network" in `/etc/dhcpd.conf`
-
-2. Denied interfaces of `wlan0` (built-in Wifi module) in `/etc/dhcpcd.conf`
-
-3. Configured the DHCP SERVER to serve requests on the interface `wlan0` in `/etc/default/isc-dhcp-server`
-
 
 ## Network configuration
+Below it is shown the network architecture of the project:
+[Network](../images/Network.jpeg)
+
+We will now configure the interface `wlan0`(which will work as an hotspot) of the Raspberry:
 
 1. In `/etc/network/interfaces` configured `wlan0` as:  
 - Ip: 192.169.0.1 
@@ -29,16 +25,43 @@ All the files mentioned in this file are available [here](../Rpi_configs/)
 3. Set the path to the hostpad configuration in `/etc/default/hostapd`: 
  - DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
-## FFserver config 
-1. Now we need to decide the configuration of the FFserver. To do this we need to create a file, where the configuration will 
-be
-set.
-2. In the file we can configure the address and port where the stream will be streamed, the quality of it, the bandwidth 
+The interface `wlan1` will not need any special configuration as it will be used to connect to a wifi-network (from the Go 
+Pro).
+
+## DHCP Server Configuration
+
+1. Configured the DHCP SERVER to give addresses to the new "machines in the network" in `/etc/dhcpd.conf`
+
+2. Denied interfaces of `wlan0` (built-in Wifi module) in `/etc/dhcpcd.conf`
+
+3. Configured the DHCP SERVER to serve requests on the interface `wlan0` in `/etc/default/isc-dhcp-server`
+
+
+
+## FFserver Configuration
+
+We now got to the point, where we need to decide how the stream will look like on the Smartphone. This means we need to 
+configure the entities(programs) responsible for the transcoding.
+
+Supposing you have  installed the FFmpeg with all extra packages, you will be able to stream every type of video you want.
+Furthermore, you will have the possibility to change the quality of the stream/video and manipulating the output. This means,
+that you decide the format of the stream.
+
+We will start to configure the stream:
+
+1. Create a file, where the configuration will be set.
+2. Specify the location of the temp file which will hold the "temporary transcoded video".
+3. In the file we can configure the address and port where the stream will be streamed, the quality of it, the bandwidth 
 available, the max number of clients, video resolution , etc.
 
 There are several examples of configurations in the [`ffserver_configs/`](./ffserver_configs) folder.
 
+I strongly suggest you to use the mjpeg format or the webm format configurations.
 
-[Main Menu](../README.md)|[Running some stuff](../scripts/Running.md)
+
+## NGINX Configuration
+
+
+[Main Menu](../README.md)|[Building the system up](../scripts/README.md)
 
 
