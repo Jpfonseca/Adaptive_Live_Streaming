@@ -44,6 +44,16 @@ When you are done with the installs, you can start to configure stuff :
 
 * [Raspberry Configuration](./Rpi_configs/README.md)
 
-## Running the project 
+## Network Status
+
+This project relies on the adapting the quality of the stream according to the quality of the network. We also need to know 
+which devices are in the network, so I made some simple scripts to know that information:
+* [Network scripts](./scripts/Network.md)
+
+## Running the project
+In order to run this project you will need to start capturing live footage from the Go Pro, then  you should start the 
+Adaptative Livestream Script
+1. [Go Pro Stream Start Script](./scripts/GoPro.md)
+2. [Adaptative Livestream Script](./scripts/Livestream.md)
 
 

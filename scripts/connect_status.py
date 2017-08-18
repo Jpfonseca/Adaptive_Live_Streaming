@@ -31,7 +31,7 @@ def check_rtt(npings, url):
         values1.append(int(re.search(r'\d+', strings1[i]).group()))
 
     #Round Trip delay info (ms)
-    if values1[1]>10:
+    if values1[1]>=10:
         return 1
     else :
         if values1[1]<5:
@@ -62,7 +62,7 @@ def check_connection(npings, url):
     
 
     #Percentage of lost packets
-    if values[2]>50:
+    if values[2]>=50:
         return 1
     else :
         if values[2]!=0:

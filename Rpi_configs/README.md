@@ -75,6 +75,4 @@ There is also a proxy_pass which allows the Smartphone to receive the videostrea
 Whenever the NGNIX Configuration is changed, it is crucial to run `nginx -s reload` on a terminal.
 
 
-[Main Menu](../README.md)|[Tools ](../scripts/README.md)
-
-
+[Main Menu](../README.md)

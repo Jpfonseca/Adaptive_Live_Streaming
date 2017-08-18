@@ -3,7 +3,7 @@
 In this project I have used `Python 2.7` therefore all libraries should be compatible with this version:
 
 ## Install Python-nmap
-We need to install pip to use  external libraries such as requests. We can do this by running:
+We need to install python2-nmap library to be able to know the hosts available to receive the stream in our network:
  * `sudo apt-get install python2-nmap`
 
 
