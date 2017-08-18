@@ -7,7 +7,7 @@ All the files mentioned in this file are available [here](../Rpi_configs/)
 Below it is shown the network architecture of the project:
 ![Network](../images/Network.jpeg)
 
-We will now configure the interface `wlan0`(which will work as an hotspot) of the Raspberry:
+We will now configure the interface `wlan0` of the Raspberry(which will work as an hotspot):
 
 1. In `/etc/network/interfaces` configured `wlan0` as:  
 - Ip: 192.169.0.1 
@@ -56,12 +56,25 @@ available, the max number of clients, video resolution , etc.
 
 There are several examples of configurations in the [`ffserver_configs/`](./ffserver_configs) folder.
 
-I strongly suggest you to use the mjpeg format or the webm format configurations.
+I strongly suggest you to use the `mjpg` format or the `webm` format configurations, because these formats are browser 
+compatible.
 
 
 ## NGINX Configuration
 
 
-[Main Menu](../README.md)|[Building the system up](../scripts/README.md)
+We need to setup a proxy server act as a intermidiary between FFmpeg and the Smartphone, alllowing the Smartphone to send 
+requests and receive responses.
+
+The configuration I used was [this](../Rpi_configs/nginx.conf)
+If you look closely you will see that the proxy server is configured to listen in port 80 the only comunicating with the 
+cellphone.
+There is also a proxy_pass which allows the Smartphone to receive the videostream from FFmpeg.
+
+
+Whenever the NGNIX Configuration is changed, it is crucial to run `nginx -s reload` on a terminal.
+
+
+[Main Menu](../README.md)|[Tools ](../scripts/README.md)
 
 
