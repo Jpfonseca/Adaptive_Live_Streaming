@@ -3,7 +3,7 @@
 Imagine your network between the RPi and Smartphone has a huge packet loss/ RTT delay, this script can reduce the quality of 
 the video in order to give you the possibility to see the video stream without lag but with lower quality.
 
-[`Network status`](./Diagram.jpeg)
+![`Network status`](./Diagram.jpeg)
 
 
 Supposing you are running the [`start_stream_gopro.py`](./start_stream_gopro.py) already, you should be able to receive the 
