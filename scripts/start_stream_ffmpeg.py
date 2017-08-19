@@ -15,23 +15,27 @@ def process_num(process):
     return os.system("pidof " + process)
 
 def start_ffserver():
-# change process to whatever command you may need to execute
-    process ="ffserver -d -f ../Rpi_configs/ffserver_mjpg.conf"
-#    process ="ffserver -d -f ../Rpi_configs/ffserver_webm.conf"
+    # change process to whatever command you may need to execute
+
+    process ="ffserver -d -f ../Rpi_configs/ffserver_mjpg.conf"      # These .conf files have the configuration of
+    #process ="ffserver -d -f ../Rpi_configs/ffserver_webm.conf"     #  the video sent to the phone
+
     os.system("nohup "+process+" &")
     return process
 
 def start_ffmpeg(quality, streamin, streamout):
 # change process to whatever command you may need to execute
 
-#In my case scenario I used these commands:
-#1) Video from GoPeo
-#ffmpeg -benchmark -re -i http://10.5.5.9:8080/videos/DCIM/100GOPRO/GOPR0675.MP4 -tune zerolatency -probesize 8192 -s 1920x1080  -c copy -vcodec libx264 http://127.0.0.1:8090/feed1.ffm
+#Type of Input stream:
+
+#1) Video from GoPro/Computer
+    #ffmpeg -benchmark -re -i http://10.5.5.9:8080/videos/DCIM/100GOPRO/GOPR0675.MP4 -tune zerolatency -probesize 8192 -s 1920x1080  -c copy -vcodec libx264 http://127.0.0.1:8090/feed1.ffm
+
 #2) Livestream from GoPro
-#ffmpeg -an -fflags nobuffer -f:v mpegts -probesize 8192 -i udp://:8554 -s 480x360  http://127.0.0.1:8090/feed1.ffm
+    #ffmpeg -an -fflags nobuffer -f:v mpegts -probesize 8192 -i udp://:8554 -s 480x360  http://127.0.0.1:8090/feed1.ffm
     process ="ffmpeg -an -fflags nobuffer -f:v mpegts -tune zerolatency -probesize 8192 -i "+streamin+" -s "+quality+" "+streamout
     os.system("nohup "+process+" &")
-    print process 
+    #print process 
     return process
 
 def kill_process(process):
@@ -43,8 +47,9 @@ def kill_process(process):
     return 1
 
 def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data_collection):
+#Stream video resolution
+
     quality=["1920x1080","1280x720","1024x768","800x600","720x480","480x360"]
-    quality=["1024x768","800x600","720x480","480x360"]
     i=0
 
     process_ffserver =start_ffserver()
@@ -56,9 +61,9 @@ def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data
         status=check_rtt(npings,destinationhost)
 
         if math.fabs(status) ==1:
-            print "FFmpeg kill"
             if kill_process("ffmpeg")==0:
                 return 1
+            ##data_collection is 1 when the stream is not delay tolerant
             if data_collection==1:
                 kill_process("ffserver")
                 time.sleep(3)
@@ -72,6 +77,7 @@ def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data
             else:
                 print "Tested all qualities . Your network may have some issues\n"
                 kill_process("ffserver")                
+                kill_process("ffmpeg")
                 return 2
         else :
 
