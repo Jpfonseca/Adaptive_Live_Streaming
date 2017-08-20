@@ -1,0 +1,22 @@
+{
+  "name": "raspthings_2017",
+  "version": "1.0.0",
+  "description": "This project aims to provide a easy configurable way to livestream a video and adapt the stream to the changes in the network. This means that when the bandwidth available decreases/increases, the quality of the video should follow the same behaviour.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jpfonseca/RaspThings_2017.git"
+  },
+  "author": "Jpfonseca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jpfonseca/RaspThings_2017/issues"
+  },
+  "homepage": "https://github.com/Jpfonseca/RaspThings_2017#readme",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2"
+  }
+}
