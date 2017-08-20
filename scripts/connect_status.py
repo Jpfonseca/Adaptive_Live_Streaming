@@ -11,23 +11,31 @@ def subprocessping(npings, url):
     proc.wait()
     return proc.communicate()
 
+
+
+##Supposing there is a device connected to the raspberry
+##we need to check if the rasp can reach it
+##and the quality of the connection(round trip delay)
+##
+##In both functions the  information is obtained from a 
+##ping output to determined network
+
+## Average Round Trip Time Delay
 def check_rtt(npings, url):
     (out,err) =subprocessping(npings,url)
 
-    print out
-##cannot ping phone so we need to check connetion with the cellphone ...
+    #print out
+
     if out.find("packet")==-1:
         print "Cannot reach  " +url
         return -1
 
-##since there is a device connected to the raspberry
-##we need to check if the rasp can  ping it
-##and the quality of the connection(round trip delay)
 
     strings1=out.split("/")
-    values1=[]              #ping round trip delay time info 
-    
-    for i in range(3, 7):    
+    values1=[]
+
+
+    for i in range(3, 7):
         values1.append(int(re.search(r'\d+', strings1[i]).group()))
 
     #Round Trip delay info (ms)
@@ -41,25 +49,20 @@ def check_rtt(npings, url):
 
 
 
+## Packet loss 
 def check_connection(npings, url):
     (out,err) =subprocessping(npings,url)
 
-    print out
-##cannot ping phone so we need to check connetion with the cellphone ...
+    #print out
     if out.find("packet")==-1:
         print "Cannot reach  " +url
         return -1
 
-##since there is a device connected to the raspberry
-##we need to check if the rasp can  ping it
-##and the quality of the connection (packet loss)
-
     strings=out.split(",")
-    values=[]               #ping packet loss info
+    values=[]
 
     for i in range(0, len(strings)):
         values.append(int(re.search(r'\d+', strings[i]).group()))
-    
 
     #Percentage of lost packets
     if values[2]>=50:

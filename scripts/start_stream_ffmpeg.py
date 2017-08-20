@@ -11,11 +11,15 @@ from connect_status import check_rtt
 
 from host_nmap import host_discovery
 
+
+#Returns the PID of a process
 def process_num(process):
     return os.system("pidof " + process)
 
+
+## Starts the FFserver
 def start_ffserver():
-    # change process to whatever command you may need to execute
+
 
     process ="ffserver -d -f ../Rpi_configs/ffserver_mjpg.conf"      # These .conf files have the configuration of
     #process ="ffserver -d -f ../Rpi_configs/ffserver_webm.conf"     #  the video sent to the phone
@@ -23,8 +27,13 @@ def start_ffserver():
     os.system("nohup "+process+" &")
     return process
 
+
+
+## Starts  FFmpeg
 def start_ffmpeg(quality, streamin, streamout):
-# change process to whatever command you may need to execute
+
+#feel free  to change the parameters of the string process
+
 
 #Type of Input stream:
 
@@ -46,9 +55,11 @@ def kill_process(process):
         return 0
     return 1
 
-def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data_collection):
-#Stream video resolution
 
+##Starts the Stream 
+def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data_collection):
+
+#Stream video resolution
     quality=["1920x1080","1280x720","1024x768","800x600","720x480","480x360"]
     i=0
 
@@ -63,10 +74,12 @@ def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data
         if math.fabs(status) ==1:
             if kill_process("ffmpeg")==0:
                 return 1
+
             ##data_collection is 1 when the stream is not delay tolerant
             if data_collection==1:
                 kill_process("ffserver")
                 time.sleep(3)
+
                 #os.system("nohup "+"sudo rm -rf /tmp/feed1.ffm"+" &")           
                 process_ffserver =start_ffserver()
 
@@ -76,7 +89,7 @@ def start_streaming(npings,destinationhost,streamin, streamout, manual_stop,data
                 process =start_ffmpeg(quality[i],streamin,streamout)
             else:
                 print "Tested all qualities . Your network may have some issues\n"
-                kill_process("ffserver")                
+                kill_process("ffserver")
                 kill_process("ffmpeg")
                 return 2
         else :

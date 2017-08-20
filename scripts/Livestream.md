@@ -23,9 +23,9 @@ The most important "feature" of this script, is the use of `FFmpeg` and `FFserve
 the GO Pro and generating a videostream with them. You can then change the video format, the resolution,etc and you can 
 also stream a modified version of the video to one or more devices.
 
-Below is a UML Diagram that explains how the script works: 
+Below is a `UML` Diagram that explains how the script works: 
 
-![UML](../images/UML.jpeg)
+![UML](../images/UML.jpg)
 
 If you want to know more about it check the next section
 
