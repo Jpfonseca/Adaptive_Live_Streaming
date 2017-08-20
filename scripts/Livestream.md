@@ -17,7 +17,8 @@ To run this script you will need to open a new terminal and type this :
 
 
 This script fetches the `stream of UDP data` using `FFmpeg` , changes it and sends it to whererever you may need the stream to 
-be.In this case, I send it to the port 8090 of my raspberry.
+be.In this case, I send it to the temporary file `feed1.ffm` which is reachable  on port 8090 of my raspberry. This file was 
+previously configured [here](../Rpi_configs/ffserver_configs/)
 
 The most important "feature" of this script, is the use of `FFmpeg` and `FFserver` to join the UDP packets and captured from 
 the GO Pro and generating a videostream with them. You can then change the video format, the resolution,etc and you can 
@@ -45,7 +46,8 @@ This function starts the FFmpeg the same in the same way that FFserver is starte
 It receives 3 inputs :
 * quality, resolution of the video (ex: 720x480)
 * streamin, location of the input stream(ex: udp://:8854)
-* streamout, location of the output stream(ex: 127.0.0.1:8090/)
+* streamout, location of the output stream(ex: 127.0.0.1:8090/feed1.ffm)
+
 
 #### Warning 
 

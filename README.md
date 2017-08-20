@@ -52,9 +52,14 @@ which devices are in the network, so I made some simple scripts to know that inf
 * [Network scripts](./scripts/Network.md)
 
 ## Running the project
+Here a simple diagram of how the system works:
+
+![Overview](./images/UML_NGINX.jpeg)
+
 In order to run this project you will need to start capturing live footage from the Go Pro, then  you should start the 
 Adaptative Livestream Script
 1. [Go Pro Stream Start Script](./scripts/GoPro.md)
 2. [Adaptative Livestream Script](./scripts/Livestream.md)
+2. [Using the project](./Website/Test.md)
 
 

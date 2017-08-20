@@ -30,6 +30,6 @@ def host_discovery(network):
     return hosts_list[int(kb-1)][0]
 
 if __name__ == "__main__":
-    host=host_discovery('192.168.0.0/24')
+    host=host_discovery('192.168.0.0/24') #Network I used to test this script
     print host
     sys.exit()
