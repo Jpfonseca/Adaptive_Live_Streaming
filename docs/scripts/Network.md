@@ -2,7 +2,6 @@
 
 
 ## connect_status.py
-
 Checks if the connection to some IP address  has significant packet loss or if the round trip time is higher than expected
 
 ### Inputs
@@ -28,7 +27,6 @@ Checks if the connection to some IP address  has significant packet loss or if t
 ## host_nmap.py 
 
 Lists the devices found on a specific network
-
 ### Inputs
 
 * network (ex: '127.0.0.0/24')    Be sure you specified the network mask !

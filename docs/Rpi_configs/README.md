@@ -54,7 +54,7 @@ We will start to configure the stream:
 3. In the file we can configure the address and port where the stream will be streamed, the quality of it, the bandwidth 
 available, the max number of clients, video resolution , etc.
 
-There are several examples of configurations in the [`ffserver_configs/`](./ffserver_configs) folder.
+There are several examples of configurations in the [`ffserver_configs/`](../../Rpi_configs/ffserver_configs) folder.
 
 I strongly suggest you to use the `mjpg` format or the `webm` format configurations, because these formats are browser 
 compatible.
@@ -66,7 +66,7 @@ compatible.
 We need to setup a proxy server act as a intermidiary between FFmpeg and the Smartphone, alllowing the Smartphone to send 
 requests and receive responses.
 
-The configuration I used was [this](../Rpi_configs/nginx.conf)
+The configuration I used was [this](../../Rpi_configs/nginx.conf)
 If you look closely you will see that the proxy server is configured to listen in port 80 the only comunicating with the 
 cellphone.
 There is also a proxy_pass which allows the Smartphone to receive the videostream from FFmpeg.

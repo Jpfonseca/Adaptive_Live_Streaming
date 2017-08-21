@@ -9,7 +9,7 @@ connected to the camera.
 
 Now you want to obtain the `UDP stream` that the Go Pro transmists when in "livestreaming mode".
 
-To do it you should run this [python program](./start_stream_gopro.py).
+To do it you should run this [python program](../../src/scripts/start_stream_gopro.py).
 
 You can do it by opening a terminal on this folder and then run the following command:
 * `python2 start_stream_gopro.py`

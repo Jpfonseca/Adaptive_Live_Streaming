@@ -44,3 +44,11 @@ When you are done with the installs, you can start to configure stuff :
 This project relies on the adapting the quality of the stream according to the quality of the network. We also need to know 
 which devices are in the network, so I made some simple scripts to know that information:
 * [Network scripts](./scripts/Network.md)
+
+## Running the Project 
+
+
+* [Running the project](./Running.md)
+
+
+

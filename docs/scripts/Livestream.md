@@ -6,11 +6,11 @@ the video in order to give you the possibility to see the video stream without l
 ![`Network status`](../images/Diagram.jpeg)
 
 
-Supposing you are running the [`start_stream_gopro.py`](./start_stream_gopro.py) already, you should be able to receive the 
-packets sent by the GoPro via `udp://:8554` 
+Supposing you are running the [`start_stream_gopro.py`](../../src/scripts/start_stream_gopro.py) already, you should be able to 
+receive the packets sent by the GoPro via `udp://:8554` 
 
 Since you are receiving the `UDP packets` from the Go Pro, its time to Capture them and generate a videostream. To do this you 
-will need to run this script: [`start_stream_ffmpeg.py`](./start_stream_ffmpeg.py)
+will need to run this script: [`start_stream_ffmpeg.py`](../../src/scripts/start_stream_ffmpeg.py)
 
 To run this script you will need to open a new terminal and type this :
 * `python2 start_stream_ffmpeg.py`
@@ -18,7 +18,7 @@ To run this script you will need to open a new terminal and type this :
 
 This script fetches the `stream of UDP data` using `FFmpeg` , changes it and sends it to whererever you may need the stream to 
 be.In this case, I send it to the temporary file `feed1.ffm` which is reachable  on port 8090 of my raspberry. This file was 
-previously configured [here](../Rpi_configs/ffserver_configs/)
+previously configured [here](../../Rpi_configs/ffserver_configs/)
 
 The most important "feature" of this script, is the use of `FFmpeg` and `FFserver` to join the UDP packets and captured from 
 the GO Pro and generating a videostream with them. You can then change the video format, the resolution,etc and you can 
@@ -38,7 +38,7 @@ This function, starts the FFserver in a background state, as it uses `nohup` . T
 while the FFserver and FFmpeg are launched. This also means that if for some reason the user logs out of the account 
 the program will still be running. To stop/kill this process you will need to send a `SIGTERM` or `SIGKILL` signal to the process.
 
-The configurations that can be used by this function are located [here](../Rpi_configs/ffserver_configs/)
+The configurations that can be used by this function are located [here](../../Rpi_configs/ffserver_configs/)
 
 ### Start FFmpeg
 This function starts the FFmpeg the same in the same way that FFserver is started.
