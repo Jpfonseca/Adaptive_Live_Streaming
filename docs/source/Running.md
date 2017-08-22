@@ -2,7 +2,7 @@
 
 Here a simple diagram of how the system works:
 
-![Overview](./images/UML_NGINX.jpeg)
+![Overview](../images/UML_NGINX.jpeg)
 
 In order to run this project you will need to:
 
