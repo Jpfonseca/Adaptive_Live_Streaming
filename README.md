@@ -12,8 +12,8 @@ To analyse the Network status we  check the information of the Average RTT and t
 
 All the documentation is available in the [docs/ ](./docs/) folder. 
 
-This documentation was made using `Gitbooks`, you can read it on your browser by installing the `Gitbooks Client`. It requires 
-`nodejs` and `npm` installed on your computer.
+
+This documentation was made using `Gitbooks`, you can read it on your browser offline by installing the `Gitbooks Client`. It requires `nodejs` and `npm` installed on your computer.
 Give it a try ;) :
 
 1. Open a terminal and download/clone the repository
@@ -21,3 +21,6 @@ Give it a try ;) :
 3. Install Gitbooks `npm install gitbook-cli -g`
 4. Preview and serve the book using `gitbook serve`
 5. On your browser and access `http://localhost:portwherethebookisbeingserved`
+
+
+Or if you want, you can read the documentation online [here](https://www.gitbook.com/book/jpfonseca/adaptative_livestreaming) 
