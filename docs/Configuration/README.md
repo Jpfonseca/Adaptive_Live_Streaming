@@ -1,6 +1,6 @@
 # Configuration
 
-All the files mentioned in this file are available [here](../Rpi_configs/)
+All the files mentioned in this file are available on the [RaspThings/Rpi_configs](../../Rpi_configs/)
 
 
 ## Network configuration
