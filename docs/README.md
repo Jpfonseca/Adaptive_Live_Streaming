@@ -49,6 +49,7 @@ which devices are in the network, so I made some simple scripts to know that inf
 
 
 * [Running the project](./source/Running.md)
+* [Access the Stream](./source/Test.md)
 
 
 
