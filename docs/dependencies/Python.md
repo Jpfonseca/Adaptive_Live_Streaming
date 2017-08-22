@@ -24,5 +24,5 @@ We need to install some packages for further use in python . We can do it by run
 We now have all the needed packages and libraries needed to run the project, so we can start configuring some stuff.
 
 
-[Main Menu](../README.md)|[Next](../Rpi_configs/README.md)
+[Main Menu](../README.md)|[Next](../Configuration/README.md)
 

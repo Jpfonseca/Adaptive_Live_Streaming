@@ -37,18 +37,18 @@ In order to run this project you will need to install and compile some packages 
 
 When you are done with the installs, you can start to configure stuff :
 
-* [Raspberry Configuration](./Rpi_configs/README.md)
+* [Raspberry Configuration](./Configuration/README.md)
 
 ## Network Status
 
 This project relies on the adapting the quality of the stream according to the quality of the network. We also need to know 
 which devices are in the network, so I made some simple scripts to know that information:
-* [Network scripts](./scripts/Network.md)
+* [Network scripts](./source/Network.md)
 
 ## Running the Project 
 
 
-* [Running the project](./Running.md)
+* [Running the project](./source/Running.md)
 
 
 
