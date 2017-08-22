@@ -15,3 +15,5 @@ receive the images recorded by the camera.
 6. Connect the Smartphone to the Hotspot Created by the Raspberry
 2. [Access the Stream on the Smartphone](./Test.md)
 
+[Main Menu](../README.md)
+
