@@ -6,13 +6,20 @@ import requests
 from time import sleep
 
 
+#This script allows you to maintain a connection to the Go Pro over Wifi
+#Generally the Go Pro can't sustain a wifi connection for more than 20 mins,
+#and while streaming that capacity drops to only 2 mins.
+
+#In order to use the script make sure you are connected to the GoPro's wifi
+
 def get_command_msg(id):
     return "_GPHD_:%u:%u:%d:%1lf\n" % (0, 0, 2, 0)
 
 
 if __name__ == "__main__":
+
 #Go Pro Livestream start link
-# http://10.5.5.9/gp/gpExec?p1=gpStreamA9&c1=restart
+#http://10.5.5.9/gp/gpExec?p1=gpStreamA9&c1=restart
 
     uri_status='http://10.5.5.9:8080/gp/gpControl/execute?p1=gpStream&c1=restart'
     req=requests.get(uri_status)
@@ -23,11 +30,12 @@ if __name__ == "__main__":
         sys.exit()
     else:
 
+
 # Keep stream Alive python script from:
 #https://gist.github.com/3v1n0/38bcd4f7f0cb3c279bad#file-hero4-udp-keep-alive-send-py
 #as on 20 July 2017 22:48
         UDP_IP = "10.5.5.9"
-        UDP_PORT = 8554
+        UDP_PORT = 8554       #port where the Go Pro Hero4 video streams
         KEEP_ALIVE_PERIOD = 2500
         KEEP_ALIVE_CMD = 2
         MESSAGE = get_command_msg(KEEP_ALIVE_CMD)
