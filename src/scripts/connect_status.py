@@ -10,10 +10,12 @@ import sys
 #we need to check if the Raspberry can reach it
 #and the quality of the connection(round trip delay)
 
-#In both functions the  information is obtained from a 
+#In both functions the  information is obtained from a
 #ping output, to determined network
 
 
+#Opens a subprocess that runs the ping command to a address(url)
+#for a specified number times (npings)
 def subprocessping(npings, url):
     proc = subprocess.Popen(["ping","-c", str(npings), url],stdout=subprocess.PIPE)
     proc.wait()
@@ -30,8 +32,8 @@ def check_rtt(npings, url):
         print "Cannot reach  " +url
         return -1
 
-    stringlist=out.split("/")
-    rtt=float(stringlist[4]) #avg rtt
+    stringlist=out.split("/") #list of strings divided by the "/" char
+    rtt=float(stringlist[4])  #avg rtt , transforming the string into float
 
     if rtt>=10:
         return 1
@@ -52,9 +54,12 @@ def check_connection(npings, url):
         print "Cannot reach  " +url
         return -1
 
-    stringlist=out.split(",")
-    string=stringlist[2].split() #string[2] ="0% packet loss"
+    stringlist=out.split(",")#list of strings divided by the "," char
+    string=stringlist[2].split() #example: string[2] ="0% packet loss"
+                                 #list of strings divided by the " " char 
+                                 #string = ["0%", "packet","loss"]
     packetloss=[int(s) for s in string[0].split() if s.isdigit()]
+
 
     if packetloss>=50:
         return 1
@@ -66,6 +71,8 @@ def check_connection(npings, url):
 
 
 if __name__ == "__main__":
+
+    #In case you want to run this program solo
     address="google.pt"
     npings=10
     print "Packet loss: "+str(check_connection(npings, address))+"\n Round Trip Delay: "+str(check_connection(npings, 

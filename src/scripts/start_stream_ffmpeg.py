@@ -30,18 +30,16 @@ def start_ffserver():
 
 
 ## Starts  FFmpeg
+
 def start_ffmpeg(quality, streamin, streamout):
+#Type of Input stream:
+#1) Video from GoPro/Computer
+    #ffmpeg -benchmark -re -i http://10.5.5.9:8080/videos/DCIM/100GOPRO/GOPR0675.MP4 -tune zerolatency -probesize 8192 -s 1920x1080  -c copy -vcodec libx264 http://127.0.0.1:8090/feed1.ffm
+#2) Livestream from GoPro
+    #ffmpeg -an -fflags nobuffer -f:v mpegts -probesize 8192 -i udp://:8554 -s 480x360  http://127.0.0.1:8090/feed1.ffm
 
 #feel free  to change the parameters of the string process
 
-
-#Type of Input stream:
-
-#1) Video from GoPro/Computer
-    #ffmpeg -benchmark -re -i http://10.5.5.9:8080/videos/DCIM/100GOPRO/GOPR0675.MP4 -tune zerolatency -probesize 8192 -s 1920x1080  -c copy -vcodec libx264 http://127.0.0.1:8090/feed1.ffm
-
-#2) Livestream from GoPro
-    #ffmpeg -an -fflags nobuffer -f:v mpegts -probesize 8192 -i udp://:8554 -s 480x360  http://127.0.0.1:8090/feed1.ffm
     process ="ffmpeg -an -fflags nobuffer -f:v mpegts -tune zerolatency -probesize 8192 -i "+streamin+" -s "+quality+" "+streamout
     os.system("nohup "+process+" &")
     #print process 
